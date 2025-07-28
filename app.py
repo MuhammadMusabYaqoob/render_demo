@@ -1,10 +1,11 @@
-from wsgiref import simple_server
 from flask import Flask, request, render_template
 import joblib
 import pandas as pd
 import json
 import numpy as np
 import os  # New import
+from http.server import SimpleHTTPRequestHandler as RequestHandler
+from http.server import HTTPServer as simple_server
 
 app = Flask(__name__)
 
