@@ -1,3 +1,4 @@
+from wsgiref import simple_server
 from flask import Flask, request, render_template
 import joblib
 import pandas as pd
@@ -63,4 +64,7 @@ def predict():
         return render_template('error.html', error=str(e))
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    host = '0.0.0.0'
+    port = 5000
+    httpd = simple_server.make_server((host, port), app)
+    httpd.serve_forever()
